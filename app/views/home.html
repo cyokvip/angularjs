@@ -1,0 +1,29 @@
+﻿<div class="example-container">
+    <hr />
+    <hr />
+    <div ng-controller="ParentCtrl">
+        <form name="form" class="css-form form-horizontal" ng-controller="subDataCtrl" novalidate>
+            <div class="control-group">Name：<input type="text" class="input-medium" ng-model="group.name" required /></div>
+            <div class="control-group">Email：<input type="text" class="input-medium" ng-model="group.email" required /></div>
+            <div class="control-group">
+                <button class="btn" ng-click="SubData(group)" ng-disabled="form.$invalid">Submit</button>
+                <button class="btn btn-success" ng-click="GetList()">GetTime</button>
+                <button class="btn btn-success" ng-click="SetData()">SetData</button>
+            </div>
+        </form>
+        <div class="layout-repeat" ng-controller="dataListCtrl">
+            <ul>
+                <li ng-repeat="item in list">
+                    Name：<span ng-bind="item.name"></span><br />
+                    Email：<span ng-bind="item.email"></span><br />
+                    Scid：<span ng-bind="item.scid"></span>
+                    <div class="form-inline" ng-show="item.siteconfig">
+                        <label class="radio" ng-repeat="(key,value) in item.siteconfigs"><input type="radio" ng-model="item.scid" value="{{key}}" /> {{key}} - {{value}}</label>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <hr />
+    <hr />
+</div>
